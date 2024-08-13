@@ -58,4 +58,5 @@ void loop()
     writeDig(count);
     count = (count>=9 || count<0) ? 0 : count + 1;
 
+    delay(1000);
 }
