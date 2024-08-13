@@ -11,31 +11,42 @@ void sevenseg(int a,int b,int c,int d,int e,int f,int g)
   digitalWrite(8, g); 
 }
 
-void writeDig(unsigned int dig)
+void writeDig(int dig)
 {
     switch(dig % 10){
     case 0:
-        sevenseg(1, 1, 1, 1, 1, 1, 0);
+        sevenseg(0, 0, 0, 0, 0, 0, 1);
+        break;
     case 1:
-        sevenseg(0, 1, 1, 0, 0, 0, 0);
+        sevenseg(1, 0, 0, 1, 1, 1, 1);
+        break;
     case 2:
-        sevenseg(1, 1, 0, 1, 1, 0, 1);
+        sevenseg(0, 0, 1, 0, 0, 1, 0);
+        break;
     case 3:
-        sevenseg(1, 1, 1, 1, 0, 0, 1);
+        sevenseg(0, 0, 0, 0, 1, 1, 0);
+        break;
     case 4:
-        sevenseg(0, 1, 1, 0, 0, 1, 1);
+        sevenseg(1, 0, 0, 1, 1, 0, 0);
+        break;
     case 5:
-        sevenseg(1, 0, 1, 1, 0, 1, 1);
+        sevenseg(0, 1, 0, 0, 1, 0, 0);
+        break;
     case 6:
-        sevenseg(1, 0, 1, 1, 1, 1, 1);
+        sevenseg(0, 1, 0, 0, 0, 0, 0);
+        break;
     case 7:
-        sevenseg(1, 1, 1, 0, 0, 0, 0);
+        sevenseg(0, 0, 0, 1, 1, 1, 1);
+        break;
     case 8:
-        sevenseg(1, 1, 1, 1, 1, 1, 1);
-    case 9:
-        sevenseg(1, 1, 1, 0, 0, 1, 1);
-    default:
         sevenseg(0, 0, 0, 0, 0, 0, 0);
+        break;
+    case 9:
+        sevenseg(0, 0, 0, 1, 1, 0, 0);
+        break;
+    default:
+        sevenseg(1, 1, 1, 1, 1, 1, 1);
+        break;
     }
 }
 
@@ -47,10 +58,11 @@ void setup()
     pinMode(5, OUTPUT);
     pinMode(6, OUTPUT);
     pinMode(7, OUTPUT);
-    pinMode(8, OUTPUT);            
+    pinMode(8, OUTPUT);
+    Serial.begin(9600);
 }
 
-unsigned int count = 0;
+int count = 0;
 void loop() 
 {
 //sevenseg(1,0,0,1,1,1,1);  
