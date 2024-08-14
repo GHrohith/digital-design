@@ -16,7 +16,7 @@ void setup() {
 
 void int_write(int in)
 {
-    disp_7447((in && 8) >> 3, (in && 4) >> 2, (in && 2) >> 1, (in && 1) );
+    disp_7447((in & 8) >> 3, (in & 4) >> 2, (in & 2) >> 1, (in & 1) );
 }
 
 int count = 0;
