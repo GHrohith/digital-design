@@ -46,14 +46,16 @@ void loop() {
         X = digitalRead(pinX);
     }
 
-    in=random(0,1);
-    Serial.write(in);
+    in=random(0,2);
+    Serial.print("in: ");
+    Serial.println(in);
 
     A=(in && !W) || (in && X);
     B=(in &&  W) || (in && X);
     out=(in && X);
-    Serial.write(A);
-    Serial.write(B);
-    Serial.write(out);
+    Serial.print("state: ");
+    Serial.println( + ((B<<1) | A));
+    Serial.print("out: ");
+    Serial.println(out);
     disp_7447(D,C,B,A);
 }
