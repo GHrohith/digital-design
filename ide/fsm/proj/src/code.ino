@@ -54,7 +54,7 @@ void loop() {
     B=(in &&  W) || (in && X);
     out=(in && X);
     Serial.print("state: ");
-    Serial.println( + ((B<<1) | A));
+    Serial.println(((B<<1) | A));
     Serial.print("out: ");
     Serial.println(out);
     disp_7447(D,C,B,A);
