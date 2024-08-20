@@ -1,17 +1,22 @@
 .include "m328Pdef.inc"
 
-ldi r16, 0b00000101
-out TCCR0B, r16
-
 ldi r17, 0b00111100
 out DDRD, r17
 
 Start:
-ldi r16, 0b11111010
-; ldi r16, 0b11111111
+ldi r16, 0b01010111
 ldi r17, 8
-ldi r18, 1
+call disp
+ldi r16, 0b00111
+ldi r17, 5
+call disp
 
+end:
+	rjmp Start
+
+
+disp:
+ldi r18, 1
 loop:
 	mov r19, r16
 	and r19, r18
@@ -27,13 +32,13 @@ sk1:
 	call wait
 	
 	dec r17
-	breq end
+	breq ret_disp
 
 	lsl r18
 	jmp loop
+ret_disp:
+	ret
 
-end:
-	rjmp Start
 
 wait:
 	push r21
