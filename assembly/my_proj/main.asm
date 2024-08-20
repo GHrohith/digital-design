@@ -25,7 +25,6 @@ sk1:
 	out PortD, r20
 
 	call wait
-
 	
 	dec r17
 	breq end
@@ -37,16 +36,22 @@ end:
 	rjmp Start
 
 wait:
+	push r21
+	push r22
+	push r23
 	ldi r21, 0xFF
+	ldi r22, 0xFF
+	ldi r23, 0xFF
 waitlp:
 	dec r21
-	ldi r22, 0xFF
-waitlp2:
-	dec r22
-	ldi r23, 0xFF
-waitlp3:
-	dec r23
-	brne waitlp3
-	brne waitlp2
 	brne waitlp
+	dec r22
+	brne waitlp
+	dec r23
+	brne waitlp
+
+	pop r23
+	pop r22
+	pop r21
 	ret
+
