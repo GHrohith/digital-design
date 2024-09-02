@@ -64,20 +64,19 @@ int main(void)
 	HAL_Delay_Init();
     
     //LED pins Output
-    PyHal_GPIO_SetDir(18,1);
     PyHal_GPIO_SetDir(21,1);
     PyHal_GPIO_SetDir(22,1);
 
+    uint8_t Z, S;
+    Z = 1;
+
     while(1)
     {
-        PyHal_GPIO_Set(18,1);//blue
-        PyHal_GPIO_Set(21,1);//green
-        PyHal_GPIO_Set(22,1);//red
-        HAL_DelayUSec(1000000);    
-        PyHal_GPIO_Set(18,0);
-        PyHal_GPIO_Set(21,0);
-        PyHal_GPIO_Set(22,0);
-        HAL_DelayUSec(1000000);    
+        S = 1 ^ 0 ^ Z;
+        PyHal_GPIO_Set(21,S);//blue
+        PyHal_GPIO_Set(22,Z);//green
+        Z = S;
+        HAL_DelayUSec(1000000);
     }
 }
 
