@@ -1,0 +1,6 @@
+set_io d(3) IO_29
+set_io d(2) IO_28
+set_io d(1) IO_27
+set_io d(0) IO_26
+set_io A IO_3
+set_io B IO_4
